@@ -11,16 +11,24 @@ Gather release activity since the last Kiali version tag and produce slide-ready
 
 ## What you need from the user
 
-Ask for anything not already provided:
+Ask only if neither is already provided:
 
-1. **Target version** — e.g. `v2.33` (the version being demoed, usually the upcoming release)
-2. **Sprint label** — e.g. `26-13` (community sprint identifier)
-3. **Meeting date** — e.g. `October 2, 2026`
-4. **Previous release tag** — default: latest published GitHub release for `kiali/kiali` (e.g. `v2.32.0`). Use this as the lower bound for commit/PR queries.
-5. **Google Slides presentation ID** (optional) — to update slides directly via Google Workspace MCP
-6. **Local repo paths** (optional) — if the user has clones, prefer `git log` locally; otherwise use `gh api`
+- **Target version** — e.g. `v2.33`, or
+- **Sprint label** — e.g. `26-13`
 
-If the user only says "prepare sprint demo" with no version, infer the next minor version from the latest release tag (e.g. `v2.32.0` → demo for `v2.33`).
+One of the two is enough. Do not ask for anything else up front.
+
+**Infer everything else automatically:**
+
+| Input | How to resolve |
+|-------|----------------|
+| Missing version | Next minor after latest `gh release` for `kiali/kiali` (e.g. `v2.32.0` → `v2.33`) |
+| Missing sprint | Increment the sprint label from the user's last demo, or derive from version if known |
+| Previous release tag | Latest published GitHub release for `kiali/kiali` |
+| Commit/PR date range | Publish date of that release |
+| Local repo paths | Use local clones when present; otherwise `gh api` / `gh pr list` |
+| Meeting date | Omit from the title slide unless the user mentions it |
+| Google Slides update | Only if the user later provides a presentation ID |
 
 ## Repositories to scan
 
@@ -122,7 +130,6 @@ Output a markdown block the user can paste into their presentation. Use this lay
 Kiali v<VERSION>
 Sprint <SPRINT>
 Community Meeting
-<MEETING DATE>
 ```
 
 ### Slide 2 — Section divider
