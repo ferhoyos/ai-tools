@@ -59,7 +59,6 @@ gh pr list --repo kiali/helm-charts --state merged \
 | Kiali project board | https://github.com/orgs/kiali/projects/67 |
 | Release notes | https://kiali.io/news/release-notes/ |
 | Sprint demo videos | https://www.youtube.com/@KialiProject |
-| Example deck (v2.33) | https://docs.google.com/presentation/d/1wPfNq-zy9X1_ULtGSTNGdeVVxgcc28f0Q2fsWAJk0N4/edit |
 
 ## Typical local clone layout
 

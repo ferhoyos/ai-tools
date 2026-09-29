@@ -7,9 +7,7 @@ allowed-tools: Bash(git *), Bash(gh *), Bash(jq *), Bash(curl *)
 
 # Sprint Demo Skill
 
-Gather release activity since the last Kiali version tag and produce slide-ready content for the community meeting deck.
-
-Reference deck: [Kiali Sprint 26-13 (v2.33)](https://docs.google.com/presentation/d/1wPfNq-zy9X1_ULtGSTNGdeVVxgcc28f0Q2fsWAJk0N4/edit)
+Gather release activity since the last Kiali version tag and produce slide-ready content for the community meeting.
 
 ## What you need from the user
 
@@ -116,7 +114,7 @@ Skip noise: version-bump commits (`Prepare for next version`), merge commits, ro
 
 ## Step 4 — Produce slide content
 
-Output a markdown block the user can paste into Google Slides. Match the standard deck layout:
+Output a markdown block the user can paste into their presentation. Use this layout:
 
 ### Slide 1 — Title
 
