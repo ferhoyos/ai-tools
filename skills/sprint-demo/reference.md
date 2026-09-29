@@ -4,13 +4,13 @@
 
 From Kiali `AGENTS.md`:
 
-| OSSM | Branch | Kiali Version |
-|------|--------|---------------|
-| 3.4 | v2.27 | 2.27 |
-| 3.3 | v2.22 | 2.22 |
-| 3.2 | v2.17 | 2.17 |
-| 3.1 | v2.11 | 2.11 |
-| 3.0 | v2.4 | 2.4 |
+| Branch | Kiali Version |
+|--------|---------------|
+| v2.27 | 2.27 |
+| v2.22 | 2.22 |
+| v2.17 | 2.17 |
+| v2.11 | 2.11 |
+| v2.4 | 2.4 |
 
 When a CVE fix mentions backports, verify branches with:
 
@@ -47,14 +47,6 @@ gh api repos/kiali/kiali/compare/${PREV}...master \
 ```bash
 git log ${PREV}..HEAD --oneline --no-merges   # when on matching tag branch
 gh pr list --repo kiali/kiali-operator --state merged \
-  --search "merged:>=2026-09-13" --limit 50 --json number,title
-```
-
-### kiali/openshift-servicemesh-plugin
-
-```bash
-git log ${PREV}..HEAD --oneline --no-merges
-gh pr list --repo kiali/openshift-servicemesh-plugin --state merged \
   --search "merged:>=2026-09-13" --limit 50 --json number,title
 ```
 
@@ -95,8 +87,7 @@ kiali_sources/
 ├── kiali/
 ├── kiali-operator/          # or kiali/operator symlink
 ├── helm-charts/
-├── kiali.io/
-└── openshift-servicemesh-plugin/   # may live under ossmc_sources/
+└── kiali.io/
 ```
 
 If local clones are unavailable, use `gh api` and `gh pr list` exclusively.
@@ -109,7 +100,6 @@ If local clones are unavailable, use `gh api` and `gh pr list` exclusively.
 | `chat`, `MCP`, `anthropic`, `AI` prefix | `[AI]` |
 | `mesh`, `ztunnel`, `ambient`, `multicluster`, `istiod` | `[Mesh]` |
 | `operator`, `CRD`, `CSV`, `molecule` | `[Operator]` |
-| `ossmc`, `console plugin` | `[OSSMC]` |
 | `CVE`, `dependabot`, `bump .* to` (security advisory) | `[Security]` |
 | `cypress`, `e2e`, `flake`, `skip` | `[Testing]` |
 | `workflow`, `jenkins`, `ci`, `hack/` CI scripts | `[CI]` |

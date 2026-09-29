@@ -1,6 +1,6 @@
 ---
 name: sprint-demo
-description: Prepare Kiali community meeting sprint demo slides by gathering changes since the last release across kiali, OSSMC, docs, operator, and helm-charts repos. Use when the user says "/sprint-demo", "prepare sprint demo", "community meeting slides", or similar.
+description: Prepare upstream Kiali community meeting sprint demo slides by gathering changes since the last release across kiali, docs, operator, and helm-charts repos. Use when the user says "/sprint-demo", "prepare sprint demo", "community meeting slides", or similar.
 disable-model-invocation: false
 allowed-tools: Bash(git *), Bash(gh *), Bash(jq *), Bash(curl *)
 ---
@@ -16,7 +16,7 @@ Reference deck: [Kiali Sprint 26-13 (v2.33)](https://docs.google.com/presentatio
 Ask for anything not already provided:
 
 1. **Target version** — e.g. `v2.33` (the version being demoed, usually the upcoming release)
-2. **Sprint label** — e.g. `26-13` (OSSM sprint number)
+2. **Sprint label** — e.g. `26-13` (community sprint identifier)
 3. **Meeting date** — e.g. `October 2, 2026`
 4. **Previous release tag** — default: latest published GitHub release for `kiali/kiali` (e.g. `v2.32.0`). Use this as the lower bound for commit/PR queries.
 5. **Google Slides presentation ID** (optional) — to update slides directly via Google Workspace MCP
@@ -30,7 +30,6 @@ If the user only says "prepare sprint demo" with no version, infer the next mino
 |------|--------|--------------|-------|
 | Kiali server + UI | `kiali/kiali` | `v2.X.X` | Primary — features, fixes, AI, mesh, CI |
 | Kiali Operator | `kiali/kiali-operator` | `v2.X.X` | CRD/operator changes, deployment |
-| OSSMC plugin | `kiali/openshift-servicemesh-plugin` | `v2.X.X` | OpenShift console integration |
 | Documentation | `kiali/kiali.io` | none (use release date) | Docs, release notes, guides |
 | Helm charts | `kiali/helm-charts` | independent | Chart values, templates |
 
@@ -53,7 +52,7 @@ gh api repos/kiali/kiali/compare/v2.32.0...master \
   --jq '.commits[] | .commit.message' | head -80
 ```
 
-Repeat for `kiali/kiali-operator` and `kiali/openshift-servicemesh-plugin` using the same tag.
+Repeat for `kiali/kiali-operator` using the same tag.
 
 For `kiali/kiali.io`, use commits since the previous release date:
 
@@ -77,9 +76,6 @@ gh pr list --repo kiali/kiali --state merged \
   --search "merged:>=2026-09-13" --limit 100 \
   --json number,title,labels,mergedAt,author
 
-gh pr list --repo kiali/openshift-servicemesh-plugin --state merged \
-  --search "merged:>=2026-09-13" --limit 50 \
-  --json number,title,mergedAt
 ```
 
 Cross-reference with `kiali/kiali.io` release notes draft if one exists:
@@ -104,7 +100,6 @@ Assign each item a **category tag** (prefix in slide bullets):
 | `[Testing]` | Cypress fixes, flaky test skips |
 | `[Security]` | CVE dependency upgrades, backports |
 | `[Docs]` | kiali.io content, guides |
-| `[OSSMC]` | Console plugin–specific (from openshift-servicemesh-plugin) |
 | `[Operator]` | Operator-only changes |
 
 **Notable changes** — user-facing features, significant refactors, dependency upgrades (PatternFly, Istio CRDs), new docs. One line each, include PR number: `(#10257)`.
@@ -114,7 +109,7 @@ Assign each item a **category tag** (prefix in slide bullets):
 **Deep-dive topics** — pick 2–3 themes worth a dedicated slide (not just a bullet). Good candidates:
 - Large UX changes with before/after story
 - New architecture (metric federation, canary upgrades)
-- Cross-repo efforts (OSSMC + Kiali UI sync)
+- Cross-repo efforts (operator, docs, or helm-charts aligned with a Kiali feature)
 - Documentation or design proposals with external links
 
 Skip noise: version-bump commits (`Prepare for next version`), merge commits, routine dependency bumps (unless security/CVE), lint-only changes.
@@ -220,6 +215,5 @@ Emit a single `## Sprint Demo Draft` section containing all slide text, then a `
 - [ ] Every bullet has a category tag `[...]`
 - [ ] PR numbers included where available `(#NNNN)`
 - [ ] CVE fixes list package, version, CVE id, and backport branches
-- [ ] OSSMC-specific items sourced from `openshift-servicemesh-plugin`, not duplicated from kiali
 - [ ] No duplicate bullets across notable changes and bug fixes
 - [ ] Deep-dive slides cover the most demo-worthy themes, not every bullet
