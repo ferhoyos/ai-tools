@@ -31,6 +31,14 @@ gh pr list --repo kiali/kiali-operator --state merged \
   --search "merged:>=2026-09-13" --limit 50 --json number,title
 ```
 
+### kiali/openshift-servicemesh-plugin
+
+```bash
+git log ${PREV}..HEAD --oneline --no-merges
+gh pr list --repo kiali/openshift-servicemesh-plugin --state merged \
+  --search "merged:>=2026-09-13" --limit 50 --json number,title
+```
+
 ### kiali/kiali.io
 
 No version tags — filter by release publish date:
@@ -67,7 +75,8 @@ kiali_sources/
 ├── kiali/
 ├── kiali-operator/          # or kiali/operator symlink
 ├── helm-charts/
-└── kiali.io/
+├── kiali.io/
+└── openshift-servicemesh-plugin/
 ```
 
 If local clones are unavailable, use `gh api` and `gh pr list` exclusively.
@@ -80,6 +89,7 @@ If local clones are unavailable, use `gh api` and `gh pr list` exclusively.
 | `chat`, `MCP`, `anthropic`, `AI` prefix | `[AI]` |
 | `mesh`, `ztunnel`, `ambient`, `multicluster`, `istiod` | `[Mesh]` |
 | `operator`, `CRD`, `CSV`, `molecule` | `[Operator]` |
+| `ossmc`, `console plugin`, `openshift-servicemesh-plugin` | `[OSSMC]` |
 | `CVE`, `dependabot`, `bump .* to` (security advisory) | `[Security]` |
 | `cypress`, `e2e`, `flake`, `skip` | `[Testing]` |
 | `workflow`, `jenkins`, `ci`, `hack/` CI scripts | `[CI]` |
