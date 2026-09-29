@@ -98,13 +98,13 @@ Assign each item a **category tag** (prefix in slide bullets):
 | `[Perf]` | Caching, graph appenders, query optimization |
 | `[CI]` | Workflows, test infra, image updates |
 | `[Testing]` | Cypress fixes, flaky test skips |
-| `[Security]` | CVE dependency upgrades, backports |
+| `[Security]` | CVE dependency upgrades |
 | `[Docs]` | kiali.io content, guides |
 | `[Operator]` | Operator-only changes |
 
 **Notable changes** — user-facing features, significant refactors, dependency upgrades (PatternFly, Istio CRDs), new docs. One line each, include PR number: `(#10257)`.
 
-**Bug fixes** — regressions fixed, CVEs, flaky tests, CI hardening. Note backports: `(backported to v2.22/v2.27)`.
+**Bug fixes** — regressions fixed, CVEs, flaky tests, CI hardening.
 
 **Deep-dive topics** — pick 2–3 themes worth a dedicated slide (not just a bullet). Good candidates:
 - Large UX changes with before/after story
@@ -159,12 +159,12 @@ Order: features first (by impact), then infra/CI. Keep to ~8–12 bullets.
 ```
 Bug fixes
 
-[Security] Upgraded <pkg> to <ver>, fixing CVE-XXXX-NNNNN (backported to ...). (#NNNN)
+[Security] Upgraded <pkg> to <ver>, fixing CVE-XXXX-NNNNN. (#NNNN)
 [Mesh] Fixed ... (#NNNN)
 ...
 ```
 
-Group security CVEs first. Include backport branches when mentioned in PR/commit.
+Group security CVEs first.
 
 ### Slide — Next sprint
 
@@ -214,6 +214,6 @@ Emit a single `## Sprint Demo Draft` section containing all slide text, then a `
 
 - [ ] Every bullet has a category tag `[...]`
 - [ ] PR numbers included where available `(#NNNN)`
-- [ ] CVE fixes list package, version, CVE id, and backport branches
+- [ ] CVE fixes list package, version, and CVE id
 - [ ] No duplicate bullets across notable changes and bug fixes
 - [ ] Deep-dive slides cover the most demo-worthy themes, not every bullet

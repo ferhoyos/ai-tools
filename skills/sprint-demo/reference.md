@@ -1,24 +1,5 @@
 # Sprint Demo — Reference Commands
 
-## Supported release branches (for backport notes)
-
-From Kiali `AGENTS.md`:
-
-| Branch | Kiali Version |
-|--------|---------------|
-| v2.27 | 2.27 |
-| v2.22 | 2.22 |
-| v2.17 | 2.17 |
-| v2.11 | 2.11 |
-| v2.4 | 2.4 |
-
-When a CVE fix mentions backports, verify branches with:
-
-```bash
-gh pr view <NUMBER> --repo kiali/kiali --json title,labels,body \
-  --jq '{title, labels: [.labels[].name], body}'
-```
-
 ## Per-repo commands
 
 ### kiali/kiali
