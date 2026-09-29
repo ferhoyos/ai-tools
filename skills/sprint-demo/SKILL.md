@@ -28,7 +28,6 @@ One of the two is enough. Do not ask for anything else up front.
 | Commit/PR date range | Publish date of that release |
 | Local repo paths | Use local clones when present; otherwise `gh api` / `gh pr list` |
 | Meeting date | Omit from the title slide unless the user mentions it |
-| Google Slides update | Only if the user later provides a presentation ID |
 
 ## Repositories to scan
 
@@ -191,16 +190,7 @@ https://www.linkedin.com/company/kiali/
 https://x.com/KialiProject
 ```
 
-## Step 5 — Optional: update Google Slides
-
-If the user provides a presentation ID and Google Workspace MCP is available:
-
-1. `get_presentation` — read current slide structure and IDs
-2. Update text boxes on the matching slides (title, notable changes, bug fixes)
-3. Do **not** delete slides or rearrange without explicit user approval
-4. Preserve existing images/screenshots on deep-dive slides; only update text the user asks to change
-
-## Step 6 — Review with the user
+## Step 5 — Review with the user
 
 Present the draft and ask:
 
